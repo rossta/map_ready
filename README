@@ -30,23 +30,23 @@ Setup
 Say for your Rails app you're building a map of all the best burger joints in your area. To make your burger joints map ready:
 
 1. Use geokit/geokit-rails to provide geolocations (lat, lng) and add 'acts_as_mappable' to the class definition.
-2. Include 'MapMarker'
+2. Add 'acts_as_map_marker' to the class definition. This declaration provides the interface for the marker builders to translate your mappable class to map markers.
 
 class BurgerJoint < ActiveRecord::Base
   acts_as_mappable
-  include MapMarker
+  acts_as_map_marker
 end
 
-Simple
+Usage
 
-markers = MapReady::SimpleMarkerBuilder.new(burger_joints).create_markers
+Simple
+  markers = MapReady::MarkerBuilder::Simple.new(burger_joints).create_markers
 
 Clustered
-
-markers = MapReady::Marking::Cluster.new(burger_joints).create_markers
+  markers = MapReady::MarkerBuilder::Clusterable.new(burger_joints).create_markers
 
 Offset
+  markers = MapReady::MarkerBuilder::Offsetable.new(burger_joints).create_markers
 
-markers = MapReady::Marking::Offset.new(burger_joints).create_markers
 
 Copyright (c) 2009 Ross Kaffenberger, released under the MIT license

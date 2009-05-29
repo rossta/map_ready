@@ -1,0 +1,1 @@
+require 'map_ready'

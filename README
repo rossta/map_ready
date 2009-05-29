@@ -43,10 +43,10 @@ markers = MapReady::SimpleMarkerBuilder.new(burger_joints).create_markers
 
 Clustered
 
-markers = MapReady::ClusteredMarkerBuilder.new(burger_joints).create_markers
+markers = MapReady::Marking::Cluster.new(burger_joints).create_markers
 
 Offset
 
-markers = MapReady::OffsetMarkerBuilder.new(burger_joints).create_markers
+markers = MapReady::Marking::Offset.new(burger_joints).create_markers
 
 Copyright (c) 2009 Ross Kaffenberger, released under the MIT license

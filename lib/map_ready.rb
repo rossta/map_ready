@@ -7,8 +7,7 @@ require File.dirname(__FILE__) + "/../../geokit-rails/lib/geokit-rails/defaults.
 require File.dirname(__FILE__) + "/../../geokit-rails/lib/geokit-rails/acts_as_mappable.rb"
 ActiveRecord::Base.send :include, GeoKit::ActsAsMappable
 
-require "clustered_marker_builder"
-require "offset_marker_builder"
-require "simple_marker_builder"
-require "map"
-require "marker"
+require "marker_builder"
+require "acts_as_map_marker"
+ActiveRecord::Base.send :include, MapReady::ActsAsMapMarker
+

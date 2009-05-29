@@ -15,5 +15,9 @@ module MapReady
     def id
       @value[:id]
     end
+    
+    def set_value(attribute, value)
+      @value[attribute] = value
+    end
   end
 end

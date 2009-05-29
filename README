@@ -1,7 +1,25 @@
 MapReady
 ========
 
-Introduction goes here.
+A Rails plugin to convert models into map ready marker objects. Includes support for marker clustering and offsetting. Requires the geokit and geokit-rails.
+
+The plugin provides several strategies for building map marker objects from mappable ActiveRecord models. Currently, a mappable ActiveRecord model is one that "acts_as_mappable" as defined in the geokit-rails plugin (dependency). The strategies include:
+ 1. one-to-one conversion (simple), 
+ 2. grouping by proximity (clustered), 
+ 3. offsetting by location (offset).
+
+Dependencies
+============
+
+Currently map_ready depends on the geokit gem and the geokit-rails plugin
+
+geokit
+
+- http://github.com/andre/geokit-gem/tree/master
+
+geokit-rails
+
+- http://github.com/andre/geokit-rails/tree/master
 
 
 Example
@@ -10,4 +28,4 @@ Example
 Example goes here.
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 Ross Kaffenberger, released under the MIT license

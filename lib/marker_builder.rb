@@ -16,24 +16,21 @@ module MapReady
   end
   
   class Marker
-    attr_accessor :lat, :lng, :value
-  
+    attr_accessor :lat, :lng
+    attr_reader :value
+    
     def initialize(lat, lng, opts = {})
       @lat = lat
       @lng = lng
       @value = opts
     end
-  
-    def clustered?
-      !@value[:cluster].nil?
+    
+    def []=(key, value)
+      @value[key] = value
     end
     
-    def id
-      @value[:id]
-    end
-    
-    def set_value(attribute, value)
-      @value[attribute] = value
+    def [](key)
+      @value[key]
     end
   end
   

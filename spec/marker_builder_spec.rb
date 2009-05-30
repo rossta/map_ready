@@ -98,7 +98,7 @@ describe MapReady::MarkerBuilder::Clusterable do
         cluster = MapReady::MarkerBuilder::Clusterable::Cluster.new
         cluster << loc
         @grid[Geokit::LatLng.normalize(loc)] = cluster
-        @grid.to_markers[0].clustered?.should be_false
+        @grid.to_markers[0][:cluster].should be_nil
       end
       
       it "should set marker marker clustered for array size > 1" do
@@ -108,7 +108,7 @@ describe MapReady::MarkerBuilder::Clusterable do
         cluster << loc_1
         cluster << loc_2
         @grid[Geokit::LatLng.normalize(loc_1)] = cluster
-        @grid.to_markers[0].clustered?.should be_true
+        @grid.to_markers[0][:cluster].should be_true
       end
       
       context "with two clusters in grid" do
@@ -179,11 +179,20 @@ describe MapReady::Marker do
     it "should set a lng" do
       MapReady::Marker.new(12.345, -98.765).lng.should == -98.765
     end
-    it "should be clustered when constructed with cluster array" do
-      MapReady::Marker.new(0, 0, :cluster => [1]).clustered?.should be_true
+  end
+  
+  describe "[]=" do
+    it "should set value on marker" do
+      marker = MapReady::Marker.new(0, 0, :cluster => [1])
+      marker[:cluster] = [2]
+      marker[:cluster].should == [2]
     end
-    it "should expose the id when constructed with an id option" do
-      MapReady::Marker.new(0, 0, :id => 5).id.should == 5
+  end
+  
+  describe "[]" do
+    it "should return value for key" do
+      marker = MapReady::Marker.new(0, 0, :cluster => [1])
+      marker[:cluster].should == [1]
     end
   end
   
